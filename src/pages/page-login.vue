@@ -12,10 +12,13 @@ function login() {
 
 </script>
 <template>
-   <h1>Login</h1>
-   <button @click="login">LOGIN</button>
-   <p>
-      {{ storeToken.token ? storeToken.token : "No hay token en Pinia" }}
-   </p>
+   <div>
+
+      <h1>Login</h1>
+      <button @click="login">LOGIN</button>
+      <p>
+         {{ storeToken.token ? storeToken.token : "No hay token en Pinia" }}
+      </p>
+   </div>
 </template>
 <style scoped></style>

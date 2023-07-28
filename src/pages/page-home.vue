@@ -7,12 +7,15 @@ function LogOut() {
 }
 </script>
 <template>
-   <h1>Home</h1>
-   <p>
-      {{ storeToken.token ? storeToken.token : "No hay token en Pinia" }}
-   </p>
-   <button @click="LogOut">
-      LOGOUT
-   </button>
+   <div>
+
+      <h1>Home</h1>
+      <p>
+         {{ storeToken.token ? storeToken.token : "No hay token en Pinia" }}
+      </p>
+      <button @click="LogOut">
+         LOGOUT
+      </button>
+   </div>
 </template>
 <style scoped></style>

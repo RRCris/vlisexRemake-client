@@ -1,5 +1,8 @@
 <script setup lang="ts"></script>
 <template>
-   <h2>register-Page</h2>
+   <div>
+
+      <h2>register-Page</h2>
+   </div>
 </template>
 <style scoped></style>

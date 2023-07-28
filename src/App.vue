@@ -1,24 +1,31 @@
 <script setup lang="ts">
+import { useRoute } from "vue-router";
+import comNavbarVue from "./components/vueNavbBar.vue";
+const path = useRoute().path
 </script>
 <template>
-  <nav>
-    <router-link to="/login">Login </router-link>
-    <router-link to="/register">Register </router-link>
-    <router-link to="/changepass/kjljsd9s0934klsmdf">Change </router-link>
-    <router-link to="/forgotpass">Forgot </router-link>
-    <router-link to="/home">Home </router-link>
-  </nav>
-  <router-view></router-view>
+  <comNavbarVue />
+  <router-view v-slot="{ Component }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" :key="path" />
+    </transition>
+  </router-view>
 </template>
-<style >
+<style>
 * {
   padding: 0;
   margin: 0;
 }
 
-nav {
-  background-color: #0003;
-  padding: 1rem;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.8s;
+}
 
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
+
+
