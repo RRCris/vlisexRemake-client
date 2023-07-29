@@ -3,6 +3,8 @@ import { RoutesNames, type RoutesKeys } from '@/routes/paths.routes';
 import { ref, watch, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
+import IconifyAppVue from '@/components/IconifyApp.vue';
+
 const props = defineProps<{ path: RoutesKeys }>()
 
 //obtener ruta actual y asignarle reactividad
@@ -18,7 +20,9 @@ const asingClass = computed(() => myRoute.value === RoutesNames[props.path].name
 
 
 <template>
-   <router-link :to="RoutesNames[props.path].path" :class="asingClass">{{ RoutesNames[props.path].name }}
+   <router-link :to="RoutesNames[props.path].path" :class="asingClass">
+      <p>{{ RoutesNames[props.path].name }}</p>
+      <IconifyAppVue color="#000" size="1.2rem" />
    </router-link>
 </template>
 
