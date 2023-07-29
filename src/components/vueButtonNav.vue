@@ -23,7 +23,7 @@ const asingClass = computed(() => myRoute.value === RoutesNames[props.path].name
 </template>
 
 
-<style scoped>
+<style scoped lang="scss">
 a {
    text-decoration: none;
    color: #000;
