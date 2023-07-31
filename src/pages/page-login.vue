@@ -2,14 +2,15 @@
 import InputApp from "@/components/InputApp.vue";
 
 import { ref } from "vue";
+import { ManagerQuery } from "@/services/managerQuery"
+import { authDefault } from "@/services/auth.services"
 
-import { Login } from "@/services/auth.services"
 
 const email = ref("")
 const password = ref("")
-const log = new Login();
+const log = new ManagerQuery(authDefault);
 function handlelogin() {
-   log.intentLogin(email.value, password.value)
+   log.execute({ email: email.value, password: password.value })
 }
 
 
@@ -27,6 +28,18 @@ function handlelogin() {
          {{ log.getUserLogged() }}
       </p>
       <p v-if="log.isLoading.value">esta cargando...</p>
+      <p class="error" v-if="log.haveError.value">ups, algo ha salido mal.</p>
+      <p class="success" v-if="log.isSuccess.value">el usuario ha sido authentificado</p>
    </div>
 </template>
-<style scoped></style>
+<style scoped lang="scss">
+.error {
+   background-color: #c99;
+   color: $red
+}
+
+.success {
+   background-color: #9c9;
+   color: #6f6;
+}
+</style>
