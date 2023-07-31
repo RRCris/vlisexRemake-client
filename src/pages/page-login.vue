@@ -1,27 +1,32 @@
 <script setup lang="ts">
 import InputApp from "@/components/InputApp.vue";
-import { useToken } from "@/pinia/store"
+
 import { ref } from "vue";
-import { useRouter } from "vue-router";
-const storeToken = useToken()
-const router = useRouter()
-const value = ref("hola")
 
-function login() {
-   storeToken.addToken("123456")
+import { Login } from "@/services/auth.services"
 
+const email = ref("")
+const password = ref("")
+const log = new Login();
+function handlelogin() {
+   log.intentLogin(email.value, password.value)
 }
+
 
 </script>
 <template>
    <div>
 
       <h1>Login</h1>
-      <InputApp v-model="value" />
-      <button @click="login">LOGIN</button>
+      <p>Email</p>
+      <InputApp v-model="email" />
+      <p>Password</p>
+      <InputApp v-model="password" />
+      <button @click="handlelogin">LOGIN</button>
       <p>
-         {{ storeToken.token ? storeToken.token : "No hay token en Pinia" }}
+         {{ log.getUserLogged() }}
       </p>
+      <p v-if="log.isLoading.value">esta cargando...</p>
    </div>
 </template>
 <style scoped></style>

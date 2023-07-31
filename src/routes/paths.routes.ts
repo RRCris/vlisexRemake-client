@@ -29,8 +29,8 @@ export const RoutesDeclaration: RouteRecordRaw[] = [
   { ...RoutesNames.register, component: pageRegisterVue },
   { ...RoutesNames.changePass, component: pageChangepassVue },
   { ...RoutesNames.forgotPass, component: pageForgotPass },
-  { path: '/', redirect: '/login' },
-  { path: '/:pathMatch(.*)*', redirect: '/404' },
+  { path: '/', redirect: RoutesNames.home.path },
+  { path: '/:pathMatch(.*)*', redirect: RoutesNames.notFound.path },
   { ...RoutesNames.notFound, component: pageNotFound },
   { ...RoutesNames.home, component: pageHome }
 ]
