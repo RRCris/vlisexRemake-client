@@ -12,10 +12,7 @@ const path = useRoute().path
   </router-view>
 </template>
 <style>
-* {
-  padding: 0;
-  margin: 0;
-}
+@import "@/scss/body.scss";
 
 .fade-enter-active,
 .fade-leave-active {

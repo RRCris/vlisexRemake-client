@@ -1,1 +1,135 @@
-$red: #c66;
+:root {
+
+   /*Fonts Responsives*/
+   --PageTitle: normal normal 600 4.8rem/normal 'Manrope',
+      serif;
+   --PageSub: normal normal 400 1.6rem/normal 'Manrope',
+      serif;
+
+   /*CardTexts*/
+   --CardTitle: normal normal 500 1.25rem/normal 'Manrope',
+      serif;
+   --CardPrice: normal normal 400 0.8rem/normal 'Manrope',
+      serif;
+
+
+   /*BodyTexts*/
+   --BodyTitle: normal normal 700 1.9rem/normal 'Manrope',
+      serif;
+   --BodySub: normal normal 600 1.15rem/normal 'Manrope',
+      serif;
+   --BodyText: normal normal 400 1rem/normal 'Manrope',
+      serif;
+   --BodyCaption: normal normal 400 0.8rem/normal 'Manrope',
+      serif;
+
+   /*NavBarTexts*/
+   --NavBarButton: normal normal 600 1.6rem/normal 'Manrope', serif;
+   --Button: normal normal 600 1.25rem/normal 'Manrope', serif;
+   --TabTitle: normal normal 500 1.15rem/normal 'Manrope', serif;
+   --Input: normal normal 400 1rem/normal 'Manrope', serif;
+
+
+
+   /*Color Themes*/
+   --primary_main: #232833;
+   --primary_upper: #353B47;
+   --primary_contrast: #F0F0F0;
+   --primary_disabled: #615F5F;
+   --primary_enfasis: #FFFFFF;
+
+
+   --secondary_main: #EEEEEE;
+   --secondary_upper: #D9D9D9;
+   --secondary_contrast: #515151;
+   --secondary_disabled: #A0A0A0;
+   --secondary_enfasis: #000000;
+
+   /*Shadow Themes*/
+   --shadowMainLight: 0px 10px 15px 0px #0000003b;
+   --shadowMainDark: 0px 10px 15px 0px #00000062;
+}
+
+/*Adapter mode dark and mode light*/
+.Dark {
+   --main: var(--primary_main);
+   --upper: var(--primary_upper);
+   --contrast: var(--primary_contrast);
+   --disabled: var(--primary_disabled);
+   --enfasis: var(--primary_enfasis);
+
+   --oposition_main: var(--secondary_main);
+   --oposition_upper: var(--secondary_upper);
+   --oposition_contrast: var(--secondary_contrast);
+   --oposition_disabled: var(--secondary_disabled);
+   --oposition_enfasis: var(--secondary_enfasis);
+
+
+   --shadowMain: var(--shadowMainDark);
+}
+
+.Light {
+   --main: var(--secondary_main);
+   --upper: var(--secondary_upper);
+   --contrast: var(--secondary_contrast);
+   --disabled: var(--secondary_disabled);
+   --enfasis: var(--secondary_enfasis);
+
+   --oposition_main: var(--primary_main);
+   --oposition_upper: var(--primary_upper);
+   --oposition_contrast: var(--primary_contrast);
+   --oposition_disabled: var(--primary_disabled);
+   --oposition_enfasis: var(--primary_enfasis);
+
+
+   --shadowMain: var(--shadowMainLight);
+}
+
+
+
+
+
+/*Convert variables in Class*/
+.TextCardTitle {
+   font: var(--CardTitle);
+}
+
+.TextCardPrice {
+   font: var(--CardPrice);
+}
+
+.TextBodyTitle {
+   font: var(--BodyTitle);
+}
+
+.TextBodySub {
+   font: var(--BodySub);
+}
+
+.TextBodyCaption {
+   font: var(--BodyCaption);
+}
+
+.TextNavbarButton {
+   font: var(--NavBarButton);
+}
+
+.TextButton {
+   font: var(--Button);
+}
+
+.TextTabTitle {
+   font: var(--TabTitle);
+}
+
+.TextInput {
+   font: var(--Input);
+}
+
+/*Adapter to mobile*/
+@media only screen and (max-width : 600px) {
+   :root {
+      font-size: 11px;
+   }
+
+}

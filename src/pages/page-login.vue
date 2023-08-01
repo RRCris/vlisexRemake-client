@@ -1,45 +1,48 @@
 <script setup lang="ts">
-import InputApp from "@/components/InputApp.vue";
+function SwitchTheme() {
+   const currentTheme = document.body.className;
 
-import { ref } from "vue";
-import { ManagerQuery } from "@/services/managerQuery"
-import { authDefault } from "@/services/auth.services"
-
-
-const email = ref("")
-const password = ref("")
-const log = new ManagerQuery(authDefault);
-function handlelogin() {
-   log.execute({ email: email.value, password: password.value })
+   if (currentTheme === "Light") document.body.className = "Dark"
+   else document.body.className = "Light"
 }
 
 
 </script>
 <template>
    <div>
-
-      <h1>Login</h1>
-      <p>Email</p>
-      <InputApp v-model="email" />
-      <p>Password</p>
-      <InputApp v-model="password" />
-      <button @click="handlelogin">LOGIN</button>
-      <p>
-         {{ log.getUserLogged() }}
-      </p>
-      <p v-if="log.isLoading.value">esta cargando...</p>
-      <p class="error" v-if="log.haveError.value">ups, algo ha salido mal.</p>
-      <p class="success" v-if="log.isSuccess.value">el usuario ha sido authentificado</p>
+      <h1>PageTitle</h1>
+      <h2>PageSub</h2>
+      <p class="TextCardTitle">CardTitle</p>
+      <p class="TextCardPrice">CardPrice</p>
+      <p class="TextBodyTitle">BodyTitle</p>
+      <p class="TextBodySub">BodySub</p>
+      <p class="TextBodyText">BodyText</p>
+      <p class="TextBodyCaption">BodyCaption</p>
+      <p class="TextNavbarButton">NavbarButton</p>
+      <p class="TextButton">Button</p>
+      <p class="TextTabTitle">TabTitle</p>
+      <p class="TextInput">Input</p>
+      <div class="redondo"></div>
+      <button @click="SwitchTheme">Switch Theme</button>
    </div>
 </template>
 <style scoped lang="scss">
-.error {
-   background-color: #c99;
-   color: $red
+h1 {
+   font: var(--PageTitle);
+   color: var(--enfasis)
 }
 
-.success {
-   background-color: #9c9;
-   color: #6f6;
+h2 {
+   font: var(--PageSub);
+   color: var(--disabled)
+}
+
+.redondo {
+   width: 200px;
+   height: 200px;
+   background-color: var(--main);
+   border-radius: 20px;
+   margin: 30px;
+   box-shadow: var(--shadowMain)
 }
 </style>
