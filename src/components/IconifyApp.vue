@@ -11,7 +11,7 @@ defineProps<{
 
 
 <template>
-  <Icon :icon="icon || `mdi-light:home`" :height="size || `32px`" :width="size || `32px`" :color="color || `#cc9`" />
+  <Icon :icon="icon || `mdi-light:home`" :height="size || `32px`" :width="size || `32px`" :color="color || `inherit`" />
 </template>
 
 
