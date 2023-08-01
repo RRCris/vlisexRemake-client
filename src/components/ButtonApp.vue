@@ -4,10 +4,10 @@ import IconifyApp from "@/components/IconifyApp.vue"
 
 
 const classForVariants = {
-   "primary": "TextButton buttonMain",
-   "optional": "TextButton buttonOptional",
-   "disabled": "TextButton buttonDisabled",
-   "text": "TextButton buttonText",
+   "primary": "buttonMain",
+   "optional": "buttonOptional",
+   "disabled": "buttonDisabled",
+   "text": "buttonText",
 }
 const props = defineProps<{
    title: string
@@ -17,6 +17,7 @@ const props = defineProps<{
    padding?: string,
    iconStart?: string,
    iconEnd?: string,
+   direction?: "row" | "column"
 }>()
 
 defineEmits(["click"]);
@@ -28,10 +29,10 @@ const classOposition = computed(() => classForVariants[props.variant || "primary
 
 <template>
    <div class="container" :style="{ width, height }">
-      <button :class="classOposition" @click="$emit(`click`)" :style="{ padding }">
-         <IconifyApp icon="iconamoon:home-fill" size="1.3rem" v-if="!!iconStart" />
-         <p>{{ title }}</p>
-         <IconifyApp icon="iconamoon:home-fill" size="1.3rem" v-if="!!iconEnd" />
+      <button :class="classOposition" @click="$emit(`click`)" :style="{ padding, flexDirection: direction }">
+         <IconifyApp icon="iconamoon:home-fill" :size="direction ? `2rem` : `1.3rem`" v-if="!!iconStart" />
+         <p class="TextButton">{{ title }}</p>
+         <IconifyApp icon="iconamoon:home-fill" :size="direction ? `2rem` : `1.3rem`" v-if="!!iconEnd" />
       </button>
    </div>
 </template>
@@ -60,13 +61,7 @@ const classOposition = computed(() => classForVariants[props.variant || "primary
    }
 }
 
-
-
-button > * {
-   margin: 1px
-}
-
-.buttonMain {
+button {
    width: 100%;
    height: 100%;
    padding: 0.5rem 1rem;
@@ -75,13 +70,24 @@ button > * {
    justify-content: center;
    align-items: center;
 
+   cursor: pointer;
+   transition: background-color 0.4s, transform 0.3s, border-radius 0.6s;
+
+   & > * {
+      margin: 0px 2px
+   }
+}
+
+
+
+.buttonMain {
    border-radius: 1.6rem 1.6rem 2.25rem 2.3rem;
    border: none;
    background-color: var(--oposition_main);
    color: var(--oposition_contrast);
    box-shadow: var(--shadowMain);
 
-   transition: background-color 0.4s, transform 0.3s, border-radius 0.4s;
+
 
    &:hover {
       background-color: var(--oposition_upper);
@@ -95,13 +101,6 @@ button > * {
 }
 
 .buttonOptional {
-   width: 100%;
-   height: 100%;
-   padding: 0.5rem 1rem;
-
-   display: flex;
-   justify-content: center;
-   align-items: center;
 
    border-radius: 1.6rem 1.6rem 2.25rem 2.3rem;
    border: 2px solid var(--oposition_main);
@@ -110,7 +109,7 @@ button > * {
    box-shadow: var(--shadowMain);
 
 
-   transition: background-color 0.4s, transform 0.3s, border-radius 0.4s;
+
 
    &:hover {
       background-color: var(--upper);
@@ -126,14 +125,6 @@ button > * {
 
 
 .buttonDisabled {
-   width: 100%;
-   height: 100%;
-   padding: 0.5rem 1rem;
-
-   display: flex;
-   justify-content: center;
-   align-items: center;
-
 
    background-color: var(--oposition_disabled);
    border-radius: 1.6rem 1.6rem 2.25rem 2.3rem;
@@ -142,7 +133,6 @@ button > * {
    box-shadow: var(--shadowMain);
 
 
-   transition: background-color 0.4s, transform 0.3s, border-radius 0.4s;
 
 
 
@@ -156,14 +146,6 @@ button > * {
 }
 
 .buttonText {
-   width: 100%;
-   height: 100%;
-   padding: 0.5rem 1rem;
-
-   display: flex;
-   justify-content: center;
-   align-items: center;
-
 
    background-color: transparent;
    border-radius: 1.6rem 1.6rem 2.25rem 2.3rem;

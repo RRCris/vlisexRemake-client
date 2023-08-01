@@ -21,8 +21,11 @@ function handleClick() {
       <ButtonAppVue title="hola" @click="handleClick" variant="optional" />
       <ButtonAppVue title="hola" @click="handleClick" variant="disabled" />
       <ButtonAppVue title="hola" @click="handleClick" variant="text" width="100px" />
-      <ButtonAppVue title="hola" @click="handleClick" variant="text" width="100px" icon-start="ic:baseline-home" />
+      <ButtonAppVue title="hola" @click="handleClick" variant="optional" width="100px" icon-start="ic:baseline-home" />
       <ButtonAppVue title="hola" @click="handleClick" variant="text" width="100px" icon-end="ic:baseline-home" />
+      <ButtonAppVue title="hola" @click="handleClick" variant="primary" width="100px" icon-end="ic:baseline-home" />
+      <ButtonAppVue title="hola" @click="handleClick" variant="text" width="100px" icon-start="ic:baseline-home"
+         direction="column" />
       <button @click="SwitchTheme">Switch Theme</button>
    </div>
 </template>
