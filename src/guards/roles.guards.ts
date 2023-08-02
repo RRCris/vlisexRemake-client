@@ -1,5 +1,5 @@
 import { useToken } from '@/pinia/store'
-import { RoutesNames } from '@/routes/paths.routes'
+import { routesNames as rm } from '@/routes/paths.routes'
 import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router'
 
 export function guardsRoles(to: RouteLocationNormalized, from: any, next: NavigationGuardNext) {
@@ -9,7 +9,7 @@ export function guardsRoles(to: RouteLocationNormalized, from: any, next: Naviga
     if (token === '123456') {
       next()
     } else {
-      next(RoutesNames.login.path)
+      next({ name: rm.LOGIN })
     }
   } else {
     next()

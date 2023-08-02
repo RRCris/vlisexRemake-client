@@ -5,32 +5,50 @@ import pageForgotPass from '@/pages/page-forgotpass.vue'
 import pageChangepassVue from '@/pages/page-changepass.vue'
 import pageLoginVue from '@/pages/page-login.vue'
 import pageRegisterVue from '@/pages/page-register.vue'
+import navbarLayout from '@/pages/layout/navbarLayout.vue'
 
 //Types
 import type { RouteRecordRaw } from 'vue-router'
-import { Roles } from '@/models/routes.models'
 
-//utility for links
-export const RoutesNames = {
-  login: { name: 'login', path: '/public/login' },
-  register: { name: 'register', path: '/public/register' },
-  changePass: { name: 'changePass', path: '/public/changePass' },
-  forgotPass: { name: 'forgotPass', path: '/public/forgotPass' },
-  home: { name: 'home', path: '/private/home', meta: { auth: [Roles.user] } },
-  notFound: { name: 'notFound', path: '/404' }
+export enum routesNames {
+  LOGIN = 'AuthLogin',
+  NOTFOUND = 'NotFound',
+  REGISTER = 'AuthRegister',
+  FORGOTPASS = 'ForgotPass',
+  CHANGEPASS = 'ChangePass',
+  MAINHOME = 'MainHome'
 }
 
-//type from RoutesNames
-export type RoutesKeys = keyof typeof RoutesNames
-
-//Declarcion de rutas
-export const RoutesDeclaration: RouteRecordRaw[] = [
-  { ...RoutesNames.login, component: pageLoginVue },
-  { ...RoutesNames.register, component: pageRegisterVue },
-  { ...RoutesNames.changePass, component: pageChangepassVue },
-  { ...RoutesNames.forgotPass, component: pageForgotPass },
-  { path: '/', redirect: RoutesNames.home.path },
-  { path: '/:pathMatch(.*)*', redirect: RoutesNames.notFound.path },
-  { ...RoutesNames.notFound, component: pageNotFound },
-  { ...RoutesNames.home, component: pageHome }
+export const Routes: RouteRecordRaw[] = [
+  {
+    path: '/auth',
+    component: navbarLayout,
+    children: [
+      { path: 'login', component: pageLoginVue, name: routesNames.LOGIN },
+      { path: 'register', component: pageRegisterVue, name: routesNames.REGISTER },
+      { path: 'forgotpassword', component: pageForgotPass, name: routesNames.FORGOTPASS },
+      { path: 'changepassword/:token', component: pageChangepassVue, name: routesNames.CHANGEPASS }
+    ]
+  },
+  {
+    path: '/ecommers',
+    children: [
+      { path: 'home', component: pageHome, name: routesNames.MAINHOME, meta: { auth: true } }
+    ]
+  },
+  {
+    path: '/',
+    redirect: () => ({ name: routesNames.LOGIN })
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: () => ({
+      name: routesNames.NOTFOUND
+    })
+  },
+  {
+    path: '/404',
+    component: pageNotFound,
+    name: routesNames.NOTFOUND
+  }
 ]

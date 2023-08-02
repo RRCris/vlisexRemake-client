@@ -30,9 +30,9 @@ const classOposition = computed(() => classForVariants[props.variant || "primary
 <template>
    <div class="container" :style="{ width, height }">
       <button :class="classOposition" @click="$emit(`click`)" :style="{ padding, flexDirection: direction }">
-         <IconifyApp icon="iconamoon:home-fill" :size="direction ? `2rem` : `1.3rem`" v-if="!!iconStart" />
+         <IconifyApp :icon="iconStart" :size="direction ? `2rem` : `1.3rem`" v-if="!!iconStart" />
          <p class="TextButton">{{ title }}</p>
-         <IconifyApp icon="iconamoon:home-fill" :size="direction ? `2rem` : `1.3rem`" v-if="!!iconEnd" />
+         <IconifyApp :icon="iconEnd" :size="direction ? `2rem` : `1.3rem`" v-if="!!iconEnd" />
       </button>
    </div>
 </template>

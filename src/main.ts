@@ -3,7 +3,7 @@ import App from './App.vue'
 import { createPinia } from 'pinia'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { guardsRoles } from './guards/roles.guards'
-import { RoutesDeclaration } from './routes/paths.routes'
+import { Routes } from './routes/paths.routes'
 
 //Declaracion de APP
 const app = createApp(App)
@@ -15,7 +15,7 @@ app.use(pinia)
 //creacion de enrutado
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: RoutesDeclaration
+  routes: Routes
 })
 
 //AuthGuards

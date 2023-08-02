@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
-import comNavbarVue from "./components/vueNavbBar.vue";
+
 const path = useRoute().path
 </script>
 <template>
-  <comNavbarVue />
   <router-view v-slot="{ Component }">
     <transition name="fade" mode="out-in">
       <component :is="Component" :key="path" />
@@ -16,7 +15,7 @@ const path = useRoute().path
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.8s;
+  transition: opacity 0.4s;
 }
 
 .fade-enter,
