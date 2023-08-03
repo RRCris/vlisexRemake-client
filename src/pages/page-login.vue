@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import ButtonAppVue from '@/components/ButtonApp.vue';
+import InputApp from '@/components/InputApp.vue';
+import { ref } from 'vue';
 
 function SwitchTheme() {
    const currentTheme = document.body.className;
@@ -11,6 +13,8 @@ function SwitchTheme() {
 function handleClick() {
    console.log("emit")
 }
+
+const value = ref("")
 
 </script>
 <template>
@@ -26,6 +30,8 @@ function handleClick() {
       <ButtonAppVue title="hola" @click="handleClick" variant="primary" width="100px" icon-end="ic:baseline-home" />
       <ButtonAppVue title="hola" @click="handleClick" variant="text" width="100px" icon-start="ic:baseline-home"
          direction="column" />
+
+      <InputApp v-model="value" name="hola hola" width="100px" />
       <button @click="SwitchTheme">Switch Theme</button>
    </div>
 </template>
