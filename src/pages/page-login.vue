@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ButtonAppVue from '@/components/ButtonApp.vue';
-import InputApp from '@/components/InputApp.vue';
+import InputApp, { type StructureRules } from '@/components/InputApp.vue';
 import { ref } from 'vue';
 
 function SwitchTheme() {
@@ -16,11 +16,18 @@ function handleClick() {
 
 const value = ref("")
 
+const rules: StructureRules[] = [
+   { title: "have one or more simbols", expresion: /[^\w\s]+/ },
+   { title: "have at least one number", expresion: /[0-9]+/ },
+   { title: "have at least one number", expresion: /[0-9]+/ },
+]
+
 </script>
 <template>
    <div>
       <h1>PageTitle</h1>
       <h2>PageSub</h2>
+      <InputApp v-model="value" name="Password" width="300px" secret :rules="rules" />
       <ButtonAppVue title="hola" @click="handleClick" variant="primary" width="200px" padding="1rem" />
       <ButtonAppVue title="hola" @click="handleClick" variant="optional" />
       <ButtonAppVue title="hola" @click="handleClick" variant="disabled" />
@@ -31,7 +38,8 @@ const value = ref("")
       <ButtonAppVue title="hola" @click="handleClick" variant="text" width="100px" icon-start="ic:baseline-home"
          direction="column" />
 
-      <InputApp v-model="value" name="hola hola" width="100px" />
+      <InputApp v-model="value" name="Email" width="200px" />
+      <InputApp v-model="value" name="Password" width="300px" secret />
       <button @click="SwitchTheme">Switch Theme</button>
    </div>
 </template>
@@ -44,14 +52,5 @@ h1 {
 h2 {
    font: var(--PageSub);
    color: var(--disabled)
-}
-
-.redondo {
-   width: 200px;
-   height: 200px;
-   background-color: var(--main);
-   border-radius: 20px;
-   margin: 30px;
-   box-shadow: var(--shadowMain)
 }
 </style>
