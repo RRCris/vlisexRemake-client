@@ -2,7 +2,7 @@
 import ButtonAppVue from '@/components/ButtonApp.vue';
 import InputApp, { type StructureRules } from '@/components/InputApp.vue';
 import { ref } from 'vue';
-
+import { signInGoogle } from "@/firebase/auth.firebase"
 function SwitchTheme() {
    const currentTheme = document.body.className;
 
@@ -22,13 +22,16 @@ const rules: StructureRules[] = [
    { title: "have at least one number", expresion: /[0-9]+/ },
 ]
 
+
+
 </script>
 <template>
    <div>
       <h1>PageTitle</h1>
       <h2>PageSub</h2>
       <InputApp v-model="value" name="Password" width="300px" secret :rules="rules" />
-      <ButtonAppVue title="hola" @click="handleClick" variant="primary" width="200px" padding="1rem" />
+      <ButtonAppVue title="Login With Google" @click="signInGoogle" variant="primary" width="fit-content"
+         padding="1rem 2rem" icon-start="devicon:google" />
       <ButtonAppVue title="hola" @click="handleClick" variant="optional" />
       <ButtonAppVue title="hola" @click="handleClick" variant="disabled" />
       <ButtonAppVue title="hola" @click="handleClick" variant="text" width="100px" />

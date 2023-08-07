@@ -2,7 +2,7 @@ import { users } from '@/mocks/users'
 import type { modelUserBasic } from '@/models/users.model'
 
 export async function authDefault(params: { email: string; password: string }) {
-  return await new Promise<modelUserBasic>((resolve, reject) => {
+  return new Promise<modelUserBasic>((resolve, reject) => {
     const user = users.find(
       (user) => user.password === params.password && user.email === params.email
     )
